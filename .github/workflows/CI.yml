@@ -1,0 +1,48 @@
+name: CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+
+    ford:
+
+        runs-on: ubuntu-latest
+
+        permissions:
+
+            contents: write
+
+        steps:
+
+            - uses: actions/checkout@v5
+
+            - name: Install Graphviz & Verify installation
+              run: |
+                sudo apt-get install -y graphviz
+                dot -V
+
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.x'
+
+            - name: Install FORD & Verify installation
+              run: |
+                sudo pip install ford
+                ford --version
+
+            - name: Generate the documentation
+              run: ford ford.md
+
+            - name: Upload documentation
+              uses: actions/upload-artifact@v4
+              with:
+                name: documentation
+                path: doc
+                if-no-files-found: error
+
+            - name: Deploy documentation
+              uses: JamesIves/github-pages-deploy-action@4.1.0
+              if: ${{ github.event_name == 'push'  &&  github.ref == 'refs/heads/main' }}
+              with:
+                branch: github-pages
+                folder: doc
