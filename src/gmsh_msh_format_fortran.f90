@@ -1,0 +1,177 @@
+module gmsh_msh_format_fortran
+
+    use, intrinsic :: iso_c_binding, only: c_int, c_double
+
+
+
+    implicit none
+
+
+
+    private
+
+
+
+    public :: gmsh_msh_format_type
+
+    public :: read(formatted)
+
+    public :: export_data_size
+    public :: export_file_type
+    public :: export_version
+
+
+
+    !> Version: experimental
+    type :: gmsh_msh_format_type
+
+        private
+
+        real(c_double) :: version
+
+        integer(c_int) :: file_type
+
+        integer(c_int) :: data_size
+
+    end type gmsh_msh_format_type
+
+
+
+    !> Version: experimental
+    !> Read an `$MshMeshFormat` from a connected formatted unit.
+    interface read(formatted)
+        module procedure :: read_formatted
+    end interface read(formatted)
+
+
+
+    !> Version: experimental
+    !> Exports the `data-size` of the read Gmsh MSH file format as a `c_int` value.
+    interface export_data_size
+        module procedure :: export_data_size_from_format
+    end interface export_data_size
+
+
+
+    !> Version: experimental
+    !> Exports the `file-type` of the read Gmsh MSH file format as a `c_int` value.
+    interface export_file_type
+        module procedure :: export_file_type_from_format
+    end interface export_file_type
+
+
+
+    !> Exports the file
+    !> Version: experimental
+    !> Exports the version of the read Gmsh MSH file format as a `c_double` value.
+    interface export_version
+        module procedure :: export_version_from_format
+    end interface export_version
+
+
+
+    contains
+
+
+
+    !> Version: experimental
+    !> Exports the `data-size` of the read Gmsh MSH file format as a `c_int` value.
+    elemental function export_data_size_from_format(gmsh_msh_format) result(data_size)
+
+        type(gmsh_msh_format_type), intent(in) :: gmsh_msh_format
+
+        integer(c_int) :: data_size
+
+
+
+        data_size = gmsh_msh_format%data_size
+
+    end function export_data_size_from_format
+
+
+
+    !> Version: experimental
+    !> Exports the `file-type` of the read Gmsh MSH file format as a `c_int` value.
+    elemental function export_file_type_from_format(gmsh_msh_format) result(file_type)
+
+        type(gmsh_msh_format_type), intent(in) :: gmsh_msh_format
+
+        integer(c_int) :: file_type
+
+
+
+        file_type = gmsh_msh_format%file_type
+
+    end function export_file_type_from_format
+
+
+
+    !> Version: experimental
+    !> Exports the version of the read Gmsh MSH file format as a `c_double` value.
+    elemental function export_version_from_format(gmsh_msh_format) result(version)
+
+        type(gmsh_msh_format_type), intent(in) :: gmsh_msh_format
+
+        real(c_double) :: version
+
+
+
+        version = gmsh_msh_format%version
+
+    end function export_version_from_format
+
+
+
+    !> Version: experimental
+    !> Read an `$MshMeshFormat` from a connected formatted unit.
+    subroutine read_formatted(gmsh_msh_format, unit, iotype, v_list, iostat, iomsg)
+
+        class(gmsh_msh_format_type), intent(inout) :: gmsh_msh_format
+
+        integer, intent(in) :: unit
+
+        character(*), intent(in) :: iotype
+
+        integer, intent(in) :: v_list(:)
+
+        integer, intent(out) :: iostat
+
+        character(*), intent(inout) :: iomsg
+
+
+
+        iomsg = ''
+
+
+
+        if ( size( v_list(:) ) .gt. 0 ) then
+
+            error stop "gmsh_msh_format_type does NOT support v_list formatters."
+
+        end if
+
+
+
+        select case(iotype)
+
+            case("LISTDIRECTED")
+
+                read( &!
+                unit   = unit     , &!
+                fmt    = *        , &!
+                iostat = iostat   , &!
+                iomsg  = iomsg(:)   &!
+                ) &!
+                gmsh_msh_format%version   , &!
+                gmsh_msh_format%file_type , &!
+                gmsh_msh_format%data_size
+
+            case default
+
+                error stop "gmsh_msh_format_type only supports the `LISTDIRECTED` iotype."
+
+        end select
+
+    end subroutine read_formatted
+
+end module gmsh_msh_format_fortran
