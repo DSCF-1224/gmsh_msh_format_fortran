@@ -1,3 +1,5 @@
+!> Version: experimental
+!> Implementation of a derived type to hold `$MeshFormat` of Gmsh MSH file format.
 module gmsh_msh_format_fortran
 
     use, intrinsic :: iso_c_binding, only: c_int, c_double
@@ -23,6 +25,7 @@ module gmsh_msh_format_fortran
 
 
     !> Version: experimental
+    !> Derived type to hold `$MeshFormat` of Gmsh MSH file format.
     type :: gmsh_msh_format_type
 
         private
