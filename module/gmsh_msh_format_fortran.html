@@ -90,7 +90,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="100.0% of total for modules and submodules.">62 statements</a>
+                 title="100.0% of total for modules and submodules.">90 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -124,7 +124,21 @@
         <div id="sidebar">
       <h3>Contents</h3>
   
-  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#variable-footer">footer</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#variable-header">header</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#variable-iostat_error">iostat_error</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#variable-iostat_success">iostat_success</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -180,7 +194,9 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-check_text_line">check_text_line</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-read_formatted">read_formatted</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-read_formatted_kernel">read_formatted_kernel</a>
         </div>
       </div>
     </div>
@@ -323,6 +339,91 @@ modules which it uses.
       <br>
 
 
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-footer"></span>
+              character(len=*),
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>footer</strong></td>
+<td> =</td>
+                <td>&#39;$EndMeshFormat&#39;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-header"></span>
+              character(len=*),
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>header</strong></td>
+<td> =</td>
+                <td>&#39;$MeshFormat&#39;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iostat_error"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>iostat_error</strong></td>
+<td> =</td>
+                <td>1</td>
+            <td>
+                <p><code>iostat</code> value when an error occurs</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iostat_success"></span>
+              integer,
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>iostat_success</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+                <p><code>iostat</code> value when an I/O statement executes successfully</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
 
 
         <section>
@@ -890,6 +991,91 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
         <section>
           <h2>Subroutines</h2>
               <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-check_text_line"></span> <h3>private  subroutine <a href='../proc/check_text_line.html'>check_text_line</a>(text_line, str, iostat, iomsg)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-text_line~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>text_line</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-str"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>str</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iostat~3"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iostat</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iomsg~3"></span>
+              character(len=*),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iomsg</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-read_formatted"></span> <h3>private  subroutine <a href='../proc/read_formatted.html'>read_formatted</a>(gmsh_msh_format, unit, iotype, v_list, iostat, iomsg)  
 </h3></div>
     <div class="card-body">
@@ -1008,6 +1194,95 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
     </div>
   </div>
 
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-read_formatted_kernel"></span> <h3>private  subroutine <a href='../proc/read_formatted_kernel.html'>read_formatted_kernel</a>(gmsh_msh_format, unit, iostat, iomsg)  
+</h3></div>
+    <div class="card-body">
+              <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Read an <code>$MshMeshFormat</code> from a connected formatted unit.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~5"></span>
+              class(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-unit~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>unit</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iostat~2"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iostat</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iomsg~2"></span>
+              character(len=*),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iomsg</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
         </section>
         <br>
 
@@ -1031,7 +1306,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-08-20 21:59 +0000             </p>
+ on 2025-08-23 11:53 +0000             </p>
           </div>
         </div>
         <br>
