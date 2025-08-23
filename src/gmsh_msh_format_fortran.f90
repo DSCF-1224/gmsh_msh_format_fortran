@@ -159,15 +159,7 @@ module gmsh_msh_format_fortran
 
             case("LISTDIRECTED")
 
-                read( &!
-                unit   = unit     , &!
-                fmt    = *        , &!
-                iostat = iostat   , &!
-                iomsg  = iomsg(:)   &!
-                ) &!
-                gmsh_msh_format%version   , &!
-                gmsh_msh_format%file_type , &!
-                gmsh_msh_format%data_size
+                call read_formatted_kernel(gmsh_msh_format, unit, iostat, iomsg)
 
             case default
 
@@ -176,5 +168,33 @@ module gmsh_msh_format_fortran
         end select
 
     end subroutine read_formatted
+
+
+
+    !> Version: experimental
+    !> Read an `$MshMeshFormat` from a connected formatted unit.
+    subroutine read_formatted_kernel(gmsh_msh_format, unit, iostat, iomsg)
+
+        class(gmsh_msh_format_type), intent(inout) :: gmsh_msh_format
+
+        integer, intent(in) :: unit
+
+        integer, intent(out) :: iostat
+
+        character(*), intent(inout) :: iomsg
+
+ 
+ 
+        read( &!
+        unit   = unit     , &!
+        fmt    = *        , &!
+        iostat = iostat   , &!
+        iomsg  = iomsg(:)   &!
+        ) &!
+        gmsh_msh_format%version   , &!
+        gmsh_msh_format%file_type , &!
+        gmsh_msh_format%data_size
+
+    end subroutine read_formatted_kernel
 
 end module gmsh_msh_format_fortran
