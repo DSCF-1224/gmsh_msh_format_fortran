@@ -40,6 +40,19 @@ module gmsh_msh_format_fortran
 
 
 
+    !> `iostat` value when an error occurs
+    integer, parameter :: iostat_error = 1
+
+    !> `iostat` value when an I/O statement executes successfully
+    integer, parameter :: iostat_success = 0
+
+
+
+    character(*), parameter :: header = '$MeshFormat'
+    character(*), parameter :: footer = '$EndMeshFormat'
+
+
+
     !> Version: experimental
     !> Read an `$MshMeshFormat` from a connected formatted unit.
     interface read(formatted)
@@ -183,18 +196,87 @@ module gmsh_msh_format_fortran
 
         character(*), intent(inout) :: iomsg
 
- 
- 
+
+
+        !> Version: experimental
+        !> A string for reading a line of text.<br>
+        !> The length of this string is provisional.
+        character(32) :: text_line
+
+
+
         read( &!
-        unit   = unit     , &!
-        fmt    = *        , &!
-        iostat = iostat   , &!
-        iomsg  = iomsg(:)   &!
+        unit   = unit   , &!
+        fmt    = '(A)'  , &!
+        iostat = iostat , &!
+        iomsg  = iomsg    &!
+        ) &!
+        text_line
+
+        if ( iostat .ne. iostat_success ) return
+
+        call check_text_line( &!
+        text_line = text_line , &!
+        str       = header    , &!
+        iostat    = iostat    , &!
+        iomsg     = iomsg       &!
+        )
+
+
+
+        read( &!
+        unit   = unit   , &!
+        fmt    = *      , &!
+        iostat = iostat , &!
+        iomsg  = iomsg    &!
         ) &!
         gmsh_msh_format%version   , &!
         gmsh_msh_format%file_type , &!
         gmsh_msh_format%data_size
 
+        if ( iostat .ne. iostat_success ) return
+
+
+
+        read( &!
+        unit   = unit   , &!
+        fmt    = '(A)'  , &!
+        iostat = iostat , &!
+        iomsg  = iomsg    &!
+        ) &!
+        text_line
+
+        if ( iostat .ne. iostat_success ) return
+
+        call check_text_line( &!
+        text_line = text_line , &!
+        str       = footer    , &!
+        iostat    = iostat    , &!
+        iomsg     = iomsg       &!
+        )
+
     end subroutine read_formatted_kernel
+
+
+
+    subroutine check_text_line(text_line, str, iostat, iomsg)
+
+        character(*), intent(in) :: text_line, str
+
+        integer, intent(inout) :: iostat
+
+        character(*), intent(inout) :: iomsg
+
+
+
+        if ( trim(text_line) .eq. str ) then
+
+            iostat = iostat_error
+
+            write( iomsg, '(A)' ) "Failed to read " // str
+
+        end if
+
+    end subroutine check_text_line
 
 end module gmsh_msh_format_fortran
