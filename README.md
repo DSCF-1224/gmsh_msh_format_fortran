@@ -8,11 +8,13 @@ Fortran module for reading `$MeshFormat` in the [Gmsh][GmshReferenceManualTop] [
 
 This module requires a Fortran compiler with the following features:
 
+- Fortran 2003 or later standard
+  - `iso_c_binding` intrinsic module
+    - `c_double` type for C interoperability
+    - `c_int` type for C interoperability
+  - `is_iostat_eor` function
 - Fortran 2008 or later standard
   - User-defined derived-type I/O (defined I/O) support for formatted READ operations
-- ISO C binding (`iso_c_binding` intrinsic module)
-  - `c_double` type for C interoperability
-  - `c_int` type for C interoperability
 
 ## How to use
 
