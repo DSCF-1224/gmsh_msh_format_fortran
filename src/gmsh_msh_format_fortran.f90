@@ -271,13 +271,13 @@ module gmsh_msh_format_fortran
 
 
 
-        if ( trim(text_line) .eq. str ) then
+        if ( trim(text_line) .eq. str ) return
 
-            iostat = iostat_error
 
-            write( iomsg, '(A)' ) "Failed to read " // str
 
-        end if
+        iostat = iostat_error
+
+        write( iomsg, '(A)' ) "Failed to read " // str
 
     end subroutine check_text_line
 
