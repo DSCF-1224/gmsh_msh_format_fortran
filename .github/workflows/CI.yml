@@ -24,9 +24,46 @@ jobs:
                   echo "changed=true" >> $GITHUB_OUTPUT
                 fi
 
-    ford:
+    fpm:
 
         needs: check-diff
+
+        if: needs.check-diff.outputs.changed == 'true'
+
+        runs-on: ubuntu-latest
+
+        strategy:
+
+            matrix:
+
+                profile: [debug, release]
+
+            fail-fast: false
+
+        steps:
+
+            - uses: actions/checkout@v5
+
+            - name: Install fpm
+              uses: fortran-lang/setup-fpm@v7
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Verify fpm installation
+              run: fpm --version
+
+            - name: Verify gfortran installation
+              run: gfortran --version
+
+            - name: Build library using fpm
+              run: fpm build --profile ${{ matrix.profile }}
+
+            - name: Test library using fpm (${{ matrix.profile }} mode)
+              run: fpm test --profile ${{ matrix.profile }}
+
+    ford:
+
+        needs: [check-diff, fpm]
 
         if: needs.check-diff.outputs.changed == 'true'
 

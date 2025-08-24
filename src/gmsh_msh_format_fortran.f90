@@ -213,6 +213,7 @@ module gmsh_msh_format_fortran
         ) &!
         text_line
 
+        if ( is_iostat_eor(iostat) ) iostat = iostat_success
         if ( iostat .ne. iostat_success ) return
 
         call check_text_line( &!
@@ -246,6 +247,7 @@ module gmsh_msh_format_fortran
         ) &!
         text_line
 
+        if ( is_iostat_eor(iostat) ) iostat = iostat_success
         if ( iostat .ne. iostat_success ) return
 
         call check_text_line( &!
@@ -269,13 +271,13 @@ module gmsh_msh_format_fortran
 
 
 
-        if ( trim(text_line) .eq. str ) then
+        if ( trim(text_line) .eq. str ) return
 
-            iostat = iostat_error
 
-            write( iomsg, '(A)' ) "Failed to read " // str
 
-        end if
+        iostat = iostat_error
+
+        write( iomsg, '(A)' ) "Failed to read " // str
 
     end subroutine check_text_line
 
