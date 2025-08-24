@@ -213,6 +213,7 @@ module gmsh_msh_format_fortran
         ) &!
         text_line
 
+        if ( is_iostat_eor(iostat) ) iostat = iostat_success
         if ( iostat .ne. iostat_success ) return
 
         call check_text_line( &!
@@ -246,6 +247,7 @@ module gmsh_msh_format_fortran
         ) &!
         text_line
 
+        if ( is_iostat_eor(iostat) ) iostat = iostat_success
         if ( iostat .ne. iostat_success ) return
 
         call check_text_line( &!
