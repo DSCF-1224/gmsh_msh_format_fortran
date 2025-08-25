@@ -466,8 +466,6 @@ module gmsh_msh_format_fortran
 
             end do
 
-            print *, str(1:itr)
-
             if ( iostat .ne. iostat_success ) return
 
         end block &!
