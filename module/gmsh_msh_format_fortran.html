@@ -90,7 +90,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="100.0% of total for modules and submodules.">91 statements</a>
+                 title="100.0% of total for modules and submodules.">185 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -155,7 +155,10 @@
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-export_data_size">export_data_size</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-export_file_type">export_file_type</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-export_version">export_version</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-is_ascii">is_ascii</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-is_binary">is_binary</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-read%28formatted%29">read(formatted)</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#interface-read%28unformatted%29">read(unformatted)</a>
         </div>
       </div>
     </div>
@@ -183,6 +186,8 @@
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-export_data_size_from_format">export_data_size_from_format</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-export_file_type_from_format">export_file_type_from_format</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-export_version_from_format">export_version_from_format</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-is_ascii_gmsh_msh_format">is_ascii_gmsh_msh_format</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-is_binary_gmsh_msh_format">is_binary_gmsh_msh_format</a>
         </div>
       </div>
     </div>
@@ -197,6 +202,7 @@
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-check_text_line">check_text_line</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-read_formatted">read_formatted</a>
             <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-read_formatted_kernel">read_formatted_kernel</a>
+            <a class="list-group-item" href="../module/gmsh_msh_format_fortran.html#proc-read_unformatted">read_unformatted</a>
         </div>
       </div>
     </div>
@@ -557,9 +563,7 @@ parameter
       </h3>
     </div>
       <div class="card-body">
-        <p>Exports the file
-Version: experimental
-Exports the version of the read Gmsh MSH file format as a <code>c_double</code> value.</p>
+        <p>Exports the version of the read Gmsh MSH file format as a <code>c_double</code> value.</p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
@@ -615,6 +619,128 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
 
               <div class="card">
     <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-is_ascii"></span>
+      <h3>public        interface <a href='../interface/is_ascii.html'>is_ascii</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Checks if the read Gmsh MSH file is ASCII mode</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private elemental function <a href='../proc/is_ascii_gmsh_msh_format.html'>is_ascii_gmsh_msh_format</a>(gmsh_msh_format) result(res)  
+
+    </h3>
+        <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Checks if the read Gmsh MSH file is ASCII mode</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~4"></span>
+              type(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-is_binary"></span>
+      <h3>public        interface <a href='../interface/is_binary.html'>is_binary</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Checks if the read Gmsh MSH file is binary mode</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private elemental function <a href='../proc/is_binary_gmsh_msh_format.html'>is_binary_gmsh_msh_format</a>(gmsh_msh_format) result(res)  
+
+    </h3>
+        <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Checks if the read Gmsh MSH file is binary mode</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~5"></span>
+              type(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
       <span class="anchor" id="interface-read%28formatted%29"></span>
       <h3>public        interface <a href='../interface/read(formatted).html'>read(formatted)</a> 
       </h3>
@@ -648,7 +774,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-gmsh_msh_format~4"></span>
+              <span class="anchor" id="variable-gmsh_msh_format~6"></span>
               class(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -724,6 +850,107 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
         <tr>
             <td>
               <span class="anchor" id="variable-iomsg"></span>
+              character(len=*),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iomsg</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-read%28unformatted%29"></span>
+      <h3>public        interface <a href='../interface/read(unformatted).html'>read(unformatted)</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Read an <code>$MshMeshFormat</code> from a connected unformatted unit.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine <a href='../proc/read_unformatted.html'>read_unformatted</a>(gmsh_msh_format, unit, iostat, iomsg)  
+
+    </h3>
+        <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Read an <code>$MshMeshFormat</code> from a connected unformatted unit.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~8"></span>
+              class(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-unit~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>unit</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iostat~3"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iostat</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iomsg~3"></span>
               character(len=*),
             </td>
 <td>intent(inout)</td>
@@ -985,6 +1212,104 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
     </div>
   </div>
 
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-is_ascii_gmsh_msh_format"></span> <h3>private elemental function <a href='../proc/is_ascii_gmsh_msh_format.html'>is_ascii_gmsh_msh_format</a>(gmsh_msh_format) result(res)  
+</h3></div>
+    <div class="card-body">
+              <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Checks if the read Gmsh MSH file is ASCII mode</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~4"></span>
+              type(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-is_binary_gmsh_msh_format"></span> <h3>private elemental function <a href='../proc/is_binary_gmsh_msh_format.html'>is_binary_gmsh_msh_format</a>(gmsh_msh_format) result(res)  
+</h3></div>
+    <div class="card-body">
+              <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Checks if the read Gmsh MSH file is binary mode</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~5"></span>
+              type(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
         </section>
         <br>
 
@@ -1025,7 +1350,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-str"></span>
+              <span class="anchor" id="variable-str~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1040,7 +1365,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iostat~3"></span>
+              <span class="anchor" id="variable-iostat~4"></span>
               integer,
             </td>
 <td>intent(inout)</td>
@@ -1055,7 +1380,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iomsg~3"></span>
+              <span class="anchor" id="variable-iomsg~4"></span>
               character(len=*),
             </td>
 <td>intent(inout)</td>
@@ -1099,7 +1424,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-gmsh_msh_format~4"></span>
+              <span class="anchor" id="variable-gmsh_msh_format~6"></span>
               class(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1218,7 +1543,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-gmsh_msh_format~5"></span>
+              <span class="anchor" id="variable-gmsh_msh_format~7"></span>
               class(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1283,6 +1608,95 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
     </div>
   </div>
 
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-read_unformatted"></span> <h3>private  subroutine <a href='../proc/read_unformatted.html'>read_unformatted</a>(gmsh_msh_format, unit, iostat, iomsg)  
+</h3></div>
+    <div class="card-body">
+              <dl class="dl-horizontal">
+        <dt>License</dt><dd><a rel="license" href="https://opensource.org/licenses/MIT">MIT</a></dd>
+        <dt>Version</dt><dd>experimental</dd>
+    </dl>
+
+  <p>Read an <code>$MshMeshFormat</code> from a connected unformatted unit.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gmsh_msh_format~8"></span>
+              class(<a href='../type/gmsh_msh_format_type.html'>gmsh_msh_format_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gmsh_msh_format</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-unit~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>unit</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iostat~3"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iostat</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iomsg~3"></span>
+              character(len=*),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iomsg</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
         </section>
         <br>
 
@@ -1306,7 +1720,7 @@ Exports the version of the read Gmsh MSH file format as a <code>c_double</code> 
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-08-24 10:04 +0000             </p>
+ on 2025-08-31 12:46 +0000             </p>
           </div>
         </div>
         <br>
