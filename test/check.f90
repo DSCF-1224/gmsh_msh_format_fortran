@@ -75,6 +75,16 @@ program check
 
         call handle_io_error(file = file, iostat = iostat, iomsg = iomsg )
 
+
+
+        if ( is_binary(msh_format) ) then
+
+            write( error_unit, '(A)' ) 'binary mode is detected in read(formatted)'
+
+            error stop
+
+        end if
+
     end subroutine test_formatted
 
 
@@ -124,6 +134,16 @@ program check
         )
 
         call handle_io_error(file = file, iostat = iostat, iomsg = iomsg )
+
+
+
+        if ( is_ascii(msh_format) ) then
+
+            write( error_unit, '(A)' ) 'ASCII mode is detected in read(unformatted)'
+
+            error stop
+
+        end if
 
     end subroutine test_unformatted
 
