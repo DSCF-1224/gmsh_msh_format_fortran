@@ -22,6 +22,8 @@ module gmsh_msh_format_fortran
     public :: export_data_size
     public :: export_file_type
     public :: export_version
+    public :: is_ascii
+    public :: is_binary
 
 
 
@@ -95,6 +97,22 @@ module gmsh_msh_format_fortran
 
 
 
+    !> Version: experimental
+    !> Checks if the read Gmsh MSH file is ASCII mode
+    interface is_ascii
+        module procedure :: is_ascii_gmsh_msh_format
+    end interface is_ascii
+
+
+
+    !> Version: experimental
+    !> Checks if the read Gmsh MSH file is binary mode
+    interface is_binary
+        module procedure :: is_binary_gmsh_msh_format
+    end interface is_binary
+
+
+
     contains
 
 
@@ -144,6 +162,38 @@ module gmsh_msh_format_fortran
         version = gmsh_msh_format%version
 
     end function export_version_from_format
+
+
+
+    !> Version: experimental
+    !> Checks if the read Gmsh MSH file is ASCII mode
+    elemental function is_ascii_gmsh_msh_format(gmsh_msh_format) result(res)
+
+        type(gmsh_msh_format_type), intent(in) :: gmsh_msh_format
+
+        logical :: res
+
+
+
+        res = gmsh_msh_format%file_type .eq. 0_c_int
+
+    end function is_ascii_gmsh_msh_format
+
+
+
+    !> Version: experimental
+    !> Checks if the read Gmsh MSH file is binary mode
+    elemental function is_binary_gmsh_msh_format(gmsh_msh_format) result(res)
+
+        type(gmsh_msh_format_type), intent(in) :: gmsh_msh_format
+
+        logical :: res
+
+
+
+        res = gmsh_msh_format%file_type .eq. 1_c_int
+
+    end function is_binary_gmsh_msh_format
 
 
 
