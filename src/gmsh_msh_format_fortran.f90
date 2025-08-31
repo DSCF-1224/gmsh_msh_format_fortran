@@ -88,7 +88,6 @@ module gmsh_msh_format_fortran
 
 
 
-    !> Exports the file
     !> Version: experimental
     !> Exports the version of the read Gmsh MSH file format as a `c_double` value.
     interface export_version
