@@ -220,7 +220,11 @@ module gmsh_msh_format_fortran
 
         if ( size( v_list(:) ) .gt. 0 ) then
 
-            error stop "gmsh_msh_format_type does NOT support v_list formatters."
+            iostat = iostat_error
+
+            write( iomsg, '(A)' ) "gmsh_msh_format_type does NOT support `v_list` formatters."
+
+            return
 
         end if
 
@@ -234,7 +238,9 @@ module gmsh_msh_format_fortran
 
             case default
 
-                error stop "gmsh_msh_format_type only supports the `LISTDIRECTED` iotype."
+                iostat = iostat_error
+
+                write( iomsg, '(A)' ) "gmsh_msh_format_type only supports the `LISTDIRECTED` iotype."
 
         end select
 
